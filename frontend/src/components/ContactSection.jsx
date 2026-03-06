@@ -63,7 +63,6 @@ const ContactSection = () => {
       setIsSuccess(true);
       toast.success("¡Formulario enviado correctamente! Nos pondremos en contacto contigo pronto.");
       
-      // Reset form
       setFormData({
         nombre: "",
         telefono: "",
@@ -84,7 +83,7 @@ const ContactSection = () => {
 
   if (isSuccess) {
     return (
-      <section id="contacto" className="py-20 lg:py-28 bg-white" data-testid="contact-section">
+      <section id="contacto" className="py-16 lg:py-24 bg-white" data-testid="contact-section">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <Card className="border-slate-100 overflow-hidden" data-testid="contact-success">
             <CardContent className="p-8 text-center">
@@ -126,9 +125,9 @@ const ContactSection = () => {
   }
 
   return (
-    <section id="contacto" className="py-20 lg:py-28 bg-white" data-testid="contact-section">
+    <section id="contacto" className="py-16 lg:py-24 bg-white" data-testid="contact-section">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
           {/* Left Column - Info */}
           <div>
             <span className="text-teal-600 text-sm font-semibold tracking-wider uppercase mb-4 block">
@@ -197,7 +196,12 @@ const ContactSection = () => {
           <div>
             <Card className="border-slate-100 shadow-xl" data-testid="contact-form-card">
               <CardContent className="p-6 sm:p-8">
-                <form onSubmit={handleSubmit} className="space-y-5">
+                {/* Form Title */}
+                <h3 className="text-xl font-bold text-slate-900 mb-6 text-center">
+                  Solicita tu valoración
+                </h3>
+                
+                <form onSubmit={handleSubmit} className="space-y-4">
                   {/* Name */}
                   <div>
                     <label htmlFor="nombre" className="block text-sm font-medium text-slate-700 mb-2">
@@ -324,7 +328,7 @@ const ContactSection = () => {
                       value={formData.mensaje}
                       onChange={handleChange}
                       placeholder="Cuéntanos más sobre tu caso..."
-                      className="rounded-xl min-h-[100px]"
+                      className="rounded-xl min-h-[80px]"
                       data-testid="input-mensaje"
                     />
                   </div>
@@ -359,11 +363,11 @@ const ContactSection = () => {
                     solicitud de información o cita médica, conforme a nuestro Aviso de Privacidad.
                   </p>
 
-                  {/* Submit */}
+                  {/* Submit - Botón en TEAL */}
                   <Button
                     type="submit"
                     disabled={isSubmitting || !formData.acepta_privacidad}
-                    className="w-full rounded-xl h-12 bg-slate-900 hover:bg-slate-800 text-white"
+                    className="w-full rounded-xl h-12 bg-teal-600 hover:bg-teal-700 text-white font-semibold disabled:bg-slate-300"
                     data-testid="submit-btn"
                   >
                     {isSubmitting ? (

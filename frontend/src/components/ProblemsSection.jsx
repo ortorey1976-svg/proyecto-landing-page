@@ -25,10 +25,10 @@ const problems = [
 
 const ProblemsSection = () => {
   return (
-    <section className="py-20 lg:py-28 bg-slate-50" data-testid="problems-section">
+    <section className="py-16 lg:py-24 bg-slate-50" data-testid="problems-section">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-12">
           <span className="text-teal-600 text-sm font-semibold tracking-wider uppercase mb-4 block">
             ¿Es esto para ti?
           </span>
@@ -42,16 +42,16 @@ const ProblemsSection = () => {
         </div>
 
         {/* Problems Grid */}
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-3 gap-6">
           {problems.map((problem, index) => (
             <Card
               key={index}
               className="bg-white border-slate-100 hover:border-teal-100 hover:shadow-xl transition-all duration-300 group"
               data-testid={`problem-card-${index}`}
             >
-              <CardContent className="p-8">
+              <CardContent className="p-6">
                 {/* Icon */}
-                <div className="w-14 h-14 rounded-2xl bg-teal-50 flex items-center justify-center mb-6 group-hover:bg-teal-100 transition-colors">
+                <div className="w-14 h-14 rounded-2xl bg-teal-50 flex items-center justify-center mb-5 group-hover:bg-teal-100 transition-colors">
                   <problem.icon className="w-7 h-7 text-teal-600" />
                 </div>
 
@@ -59,7 +59,7 @@ const ProblemsSection = () => {
                 <h3 className="text-xl font-semibold text-slate-900 mb-3">
                   {problem.title}
                 </h3>
-                <p className="text-slate-600 mb-6 leading-relaxed">
+                <p className="text-slate-600 mb-5 leading-relaxed">
                   {problem.description}
                 </p>
 
@@ -77,16 +77,6 @@ const ProblemsSection = () => {
               </CardContent>
             </Card>
           ))}
-        </div>
-
-        {/* Bottom CTA */}
-        <div className="mt-16 text-center">
-          <p className="text-slate-500 mb-2">
-            Atención a pacientes de <span className="font-semibold text-slate-700">16 años en adelante</span>
-          </p>
-          <p className="text-slate-600">
-            Valoramos cada caso de forma individual para ofrecerte el mejor plan de tratamiento.
-          </p>
         </div>
       </div>
     </section>

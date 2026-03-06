@@ -69,16 +69,23 @@ const Footer = () => {
       {/* Main Footer */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
-          {/* Brand Column */}
+          {/* Brand Column - Logo visible */}
           <div className="lg:col-span-1">
-            <img
-              src={LOGO_URL}
-              alt="Radiofrecuencia Articular"
-              className="h-12 w-auto mb-4 brightness-0 invert"
-            />
+            <div className="bg-white rounded-lg p-3 inline-block mb-4">
+              <img
+                src={LOGO_URL}
+                alt="Radiofrecuencia Articular"
+                className="h-10 w-auto"
+              />
+            </div>
             <p className="text-slate-400 text-sm leading-relaxed mb-4">
               Atención ortopédica especializada en rodilla, cadera y hombro 
               en Mérida, Yucatán.
+            </p>
+            <p className="text-slate-500 text-xs">
+              Dr. Armando Cardenas<br />
+              Cédula Prof. 2930543<br />
+              Especialidad 6075243
             </p>
           </div>
 

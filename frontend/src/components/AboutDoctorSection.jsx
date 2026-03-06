@@ -1,10 +1,12 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
-import { Calendar, MessageCircle, GraduationCap, Clock, Target, Heart } from "lucide-react";
+import { Calendar, MessageCircle, GraduationCap, Clock, Award, Heart, ShieldCheck } from "lucide-react";
 
 const WHATSAPP_URL = "https://wa.me/529996359889?text=Hola,%20quiero%20agendar%20una%20valoración";
 const CALENDAR_URL = "https://calendar.app.google/1UDSSAzi7LHhgGYHA";
 const DOCTOR_IMAGE = "https://customer-assets.emergentagent.com/job_e25f4938-63ae-489b-883f-4f66aba6c472/artifacts/e78w837i_Quirofano.png";
+const COLEGIO_LOGO = "https://customer-assets.emergentagent.com/job_joint-therapy-mx/artifacts/l3akv2mz_Colegio%20Mexicano%20de%20Ortopedia.jpg";
+const CONSEJO_LOGO = "https://customer-assets.emergentagent.com/job_joint-therapy-mx/artifacts/c1weaudv_Consejo%20Mexicano%20Ortopedia%20Y%20Traumatologia.png";
 
 const credentials = [
   {
@@ -18,9 +20,9 @@ const credentials = [
     description: "De experiencia clínica"
   },
   {
-    icon: Target,
-    title: "Especialista certificado",
-    description: "Ortopedia y Traumatología"
+    icon: Award,
+    title: "Cédula Prof. 2930543",
+    description: "Especialidad 6075243"
   },
   {
     icon: Heart,
@@ -45,7 +47,7 @@ const AboutDoctorSection = () => {
             <div className="doctor-photo-container">
               <img
                 src={DOCTOR_IMAGE}
-                alt="Dr. Cardenas en quirófano"
+                alt="Dr. Armando Cardenas en quirófano"
                 className="w-full rounded-2xl shadow-2xl"
                 data-testid="doctor-image"
               />
@@ -58,7 +60,7 @@ const AboutDoctorSection = () => {
                 </div>
                 <div>
                   <p className="font-semibold text-slate-900">Años de experiencia</p>
-                  <p className="text-sm text-slate-500">en ortopedia especializada</p>
+                  <p className="text-sm text-slate-500">2,000+ procedimientos</p>
                 </div>
               </div>
             </div>
@@ -69,9 +71,30 @@ const AboutDoctorSection = () => {
             <span className="text-teal-600 text-sm font-semibold tracking-wider uppercase mb-4 block">
               Sobre el Doctor
             </span>
-            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-6" data-testid="doctor-title">
-              Cirujano Ortopedista especializado en cadera, rodilla y hombro
+            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-2" data-testid="doctor-title">
+              Dr. Armando Cardenas
             </h2>
+            <p className="text-lg text-teal-600 font-medium mb-6">
+              Cirujano Ortopedista especializado en cadera, rodilla y hombro
+            </p>
+            
+            {/* Certifications Badges */}
+            <div className="flex items-center gap-4 mb-6 p-4 bg-white rounded-xl border border-slate-100">
+              <img 
+                src={COLEGIO_LOGO} 
+                alt="Colegio Mexicano de Ortopedia y Traumatología" 
+                className="h-16 w-auto object-contain"
+              />
+              <img 
+                src={CONSEJO_LOGO} 
+                alt="Consejo Mexicano de Ortopedia y Traumatología" 
+                className="h-16 w-auto object-contain"
+              />
+              <div className="flex items-center gap-2 text-sm text-slate-600">
+                <ShieldCheck className="w-5 h-5 text-teal-600" />
+                <span>Médico Certificado</span>
+              </div>
+            </div>
             
             <div className="space-y-6 text-slate-600 leading-relaxed mb-8">
               <p>
@@ -130,7 +153,7 @@ const AboutDoctorSection = () => {
               <Button
                 asChild
                 size="lg"
-                className="rounded-full px-8 bg-slate-900 hover:bg-slate-800 text-white shadow-lg"
+                className="rounded-full px-8 bg-teal-600 hover:bg-teal-700 text-white shadow-lg"
                 data-testid="doctor-calendar-btn"
               >
                 <a href={CALENDAR_URL} target="_blank" rel="noopener noreferrer">

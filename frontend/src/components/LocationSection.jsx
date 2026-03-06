@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { MapPin, Clock, Phone, Mail, ExternalLink } from "lucide-react";
 
 const GOOGLE_MAPS_URL = "https://maps.google.com/?q=Torre+Cenit+Medical+Center+Altabrisa+Merida";
-const HOSPITAL_IMAGE = "https://images.pexels.com/photos/18435276/pexels-photo-18435276.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940";
+const GOOGLE_MAPS_EMBED = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.5!2d-89.5954!3d21.0!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sTorre%20Cenit%20Medical%20Center!5e0!3m2!1ses!2smx!4v1234567890";
 
 const schedule = [
   { day: "Lunes", hours: "10:00 - 14:00" },
@@ -18,13 +18,13 @@ const schedule = [
 
 const LocationSection = () => {
   const today = new Date().getDay();
-  const dayIndex = today === 0 ? 6 : today - 1; // Adjust for Sunday
+  const dayIndex = today === 0 ? 6 : today - 1;
 
   return (
-    <section id="ubicacion" className="py-20 lg:py-28 bg-slate-50" data-testid="location-section">
+    <section id="ubicacion" className="py-16 lg:py-24 bg-slate-50" data-testid="location-section">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-12">
           <span className="text-teal-600 text-sm font-semibold tracking-wider uppercase mb-4 block">
             Encuéntranos
           </span>
@@ -37,19 +37,21 @@ const LocationSection = () => {
         </div>
 
         <div className="grid lg:grid-cols-2 gap-8">
-          {/* Location Card */}
+          {/* Location Card with Map */}
           <Card className="overflow-hidden border-slate-100" data-testid="location-card">
-            <div className="relative h-48">
-              <img
-                src={HOSPITAL_IMAGE}
-                alt="Torre Cenit Medical Center"
-                className="w-full h-full object-cover"
+            {/* Google Maps Embed */}
+            <div className="relative h-64 bg-slate-200">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.8876!2d-89.5954!3d20.9876!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f5671c5d98e5c41%3A0x123456789!2sTorre%20Cenit%20Medical%20Center!5e0!3m2!1ses-419!2smx!4v1700000000000!5m2!1ses-419!2smx"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Ubicación Torre Cenit Medical Center"
+                className="absolute inset-0"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent" />
-              <div className="absolute bottom-4 left-4 right-4">
-                <h3 className="text-white font-semibold text-lg">Torre Cenit Medical Center</h3>
-                <p className="text-white/80 text-sm">Altabrisa, Mérida</p>
-              </div>
             </div>
             <CardContent className="p-6">
               <div className="space-y-4">
@@ -59,7 +61,7 @@ const LocationSection = () => {
                     <MapPin className="w-5 h-5 text-teal-600" />
                   </div>
                   <div>
-                    <p className="font-medium text-slate-900">Dirección</p>
+                    <p className="font-medium text-slate-900">Torre Cenit Medical Center</p>
                     <p className="text-slate-600 text-sm">
                       Piso PH, Consultorio 1114<br />
                       C. 15 #501, Col. Altabrisa<br />
@@ -70,8 +72,8 @@ const LocationSection = () => {
 
                 {/* Phone */}
                 <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-blue-50 flex items-center justify-center flex-shrink-0">
-                    <Phone className="w-5 h-5 text-blue-600" />
+                  <div className="w-10 h-10 rounded-lg bg-teal-50 flex items-center justify-center flex-shrink-0">
+                    <Phone className="w-5 h-5 text-teal-600" />
                   </div>
                   <div>
                     <p className="font-medium text-slate-900">WhatsApp</p>
@@ -86,8 +88,8 @@ const LocationSection = () => {
 
                 {/* Email */}
                 <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-purple-50 flex items-center justify-center flex-shrink-0">
-                    <Mail className="w-5 h-5 text-purple-600" />
+                  <div className="w-10 h-10 rounded-lg bg-teal-50 flex items-center justify-center flex-shrink-0">
+                    <Mail className="w-5 h-5 text-teal-600" />
                   </div>
                   <div>
                     <p className="font-medium text-slate-900">Correo</p>
@@ -104,7 +106,7 @@ const LocationSection = () => {
                 <Button
                   asChild
                   variant="outline"
-                  className="w-full rounded-xl mt-4"
+                  className="w-full rounded-xl mt-2"
                   data-testid="maps-btn"
                 >
                   <a href={GOOGLE_MAPS_URL} target="_blank" rel="noopener noreferrer">
@@ -120,8 +122,8 @@ const LocationSection = () => {
           <Card className="border-slate-100" data-testid="schedule-card">
             <CardContent className="p-6">
               <div className="flex items-center gap-3 mb-6">
-                <div className="w-10 h-10 rounded-lg bg-amber-50 flex items-center justify-center">
-                  <Clock className="w-5 h-5 text-amber-600" />
+                <div className="w-10 h-10 rounded-lg bg-teal-50 flex items-center justify-center">
+                  <Clock className="w-5 h-5 text-teal-600" />
                 </div>
                 <div>
                   <h3 className="font-semibold text-slate-900">Horarios de Atención</h3>
@@ -129,7 +131,7 @@ const LocationSection = () => {
                 </div>
               </div>
 
-              <div className="space-y-3">
+              <div className="space-y-2">
                 {schedule.map((item, index) => (
                   <div
                     key={index}

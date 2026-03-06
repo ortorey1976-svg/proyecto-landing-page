@@ -4,7 +4,7 @@ import { Calendar, MessageCircle, ChevronDown } from "lucide-react";
 
 const WHATSAPP_URL = "https://wa.me/529996359889?text=Hola,%20quiero%20información%20sobre%20una%20consulta";
 const CALENDAR_URL = "https://calendar.app.google/1UDSSAzi7LHhgGYHA";
-const HERO_IMAGE = "https://images.unsplash.com/photo-1542286379-57e115f586ae?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzF8MHwxfHNlYXJjaHwyfHxhY3RpdmUlMjBlbGRlcmx5JTIwd29tYW4lMjBoaWtpbmd8ZW58MHx8fHwxNzcyODE5OTEwfDA&ixlib=rb-4.1.0&q=85";
+const HERO_IMAGE = "https://customer-assets.emergentagent.com/job_joint-therapy-mx/artifacts/ksgdkdi3_Equipo%20de%20radiofrecuencia.jpg";
 
 const HeroSection = () => {
   const scrollToContact = () => {
@@ -24,10 +24,10 @@ const HeroSection = () => {
       <div className="absolute inset-0">
         <img
           src={HERO_IMAGE}
-          alt="Vida activa"
-          className="w-full h-full object-cover"
+          alt="Dr. Armando Cardenas con equipo de radiofrecuencia"
+          className="w-full h-full object-cover object-top"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/95 via-slate-900/80 to-slate-900/60" />
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/95 via-slate-900/80 to-slate-900/40" />
       </div>
 
       {/* Content */}
@@ -96,12 +96,16 @@ const HeroSection = () => {
 
           {/* Trust indicators */}
           <div 
-            className="mt-12 flex flex-wrap gap-8 text-slate-400 text-sm animate-fade-in-up animate-delay-400"
+            className="mt-12 flex flex-wrap gap-6 text-slate-400 text-sm animate-fade-in-up animate-delay-400"
             data-testid="hero-trust"
           >
             <div className="flex items-center">
               <span className="text-3xl font-bold text-white mr-2">20+</span>
               años de experiencia
+            </div>
+            <div className="flex items-center">
+              <span className="text-3xl font-bold text-white mr-2">2,000+</span>
+              procedimientos
             </div>
             <div className="flex items-center">
               <span className="text-white">Especialista en Ortopedia y Traumatología</span>

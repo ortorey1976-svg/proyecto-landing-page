@@ -3,6 +3,7 @@ import Navbar from "../components/Navbar";
 import HeroSection from "../components/HeroSection";
 import ProblemsSection from "../components/ProblemsSection";
 import ServicesSection from "../components/ServicesSection";
+import TestimonialsSection from "../components/TestimonialsSection";
 import AboutDoctorSection from "../components/AboutDoctorSection";
 import ProcessSection from "../components/ProcessSection";
 import LocationSection from "../components/LocationSection";
@@ -30,6 +31,7 @@ const LandingPage = () => {
         <HeroSection />
         <ProblemsSection />
         <ServicesSection />
+        <TestimonialsSection />
         <AboutDoctorSection />
         <ProcessSection />
         <LocationSection />
