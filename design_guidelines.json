@@ -1,0 +1,96 @@
+{
+  "identity": {
+    "name": "Radiofrecuencia Articular",
+    "tone": "Clinical Boutique",
+    "keywords": ["Premium", "Trustworthy", "Modern", "Human", "Surgical Precision"],
+    "archetype": "The Performance Pro (Medical Edition)",
+    "mission": "Restore mobility without aggressive surgery through precision medicine."
+  },
+  "typography": {
+    "primary_font": "Manrope",
+    "secondary_font": "Inter",
+    "scale": {
+      "h1": "text-4xl md:text-6xl font-bold tracking-tight leading-tight",
+      "h2": "text-3xl md:text-4xl font-semibold tracking-tight",
+      "h3": "text-2xl md:text-3xl font-medium",
+      "body": "text-base md:text-lg leading-relaxed text-slate-600",
+      "small": "text-sm font-medium tracking-wide uppercase text-teal-600"
+    }
+  },
+  "colors": {
+    "primary": "#0F172A",
+    "secondary": "#0D9488",
+    "accent": "#F0FDFA",
+    "background": "#FFFFFF",
+    "surface": "#F8FAFC",
+    "text_primary": "#0F172A",
+    "text_secondary": "#475569",
+    "border": "#E2E8F0",
+    "success": "#10B981",
+    "error": "#EF4444",
+    "warning": "#F59E0B"
+  },
+  "visual_enhancers": {
+    "radius": "rounded-2xl",
+    "shadows": {
+      "card": "shadow-[0_4px_20px_-2px_rgba(0,0,0,0.05)] hover:shadow-[0_10px_40px_-10px_rgba(0,0,0,0.1)] transition-all duration-300",
+      "button": "shadow-lg shadow-teal-900/20 hover:shadow-teal-900/30",
+      "float": "shadow-2xl shadow-slate-900/20"
+    },
+    "gradients": {
+      "hero_overlay": "bg-gradient-to-r from-slate-900/90 to-slate-900/40",
+      "text_gradient": "bg-clip-text text-transparent bg-gradient-to-r from-slate-900 to-teal-700",
+      "surface_gradient": "bg-gradient-to-b from-white to-slate-50"
+    },
+    "borders": "border border-slate-100"
+  },
+  "layout_strategies": {
+    "spacing": "Generous (p-8 to p-24)",
+    "container": "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8",
+    "grid_system": "Bento Grid for Services (mix of 1x1, 2x1, 2x2)",
+    "alignment": "Left-aligned text for readability, asymmetric visual balance"
+  },
+  "components": {
+    "buttons": {
+      "primary": "bg-slate-900 text-white hover:bg-slate-800 rounded-full px-8 py-4 font-medium transition-all shadow-lg hover:translate-y-[-2px]",
+      "secondary": "bg-white text-slate-900 border border-slate-200 hover:border-slate-300 hover:bg-slate-50 rounded-full px-8 py-4 font-medium transition-all",
+      "ghost": "text-slate-600 hover:text-slate-900 hover:bg-slate-100/50 rounded-lg px-4 py-2"
+    },
+    "cards": {
+      "service": "bg-white p-8 rounded-2xl border border-slate-100 hover:border-teal-100 hover:shadow-xl transition-all group",
+      "testimonial": "bg-slate-50 p-8 rounded-2xl border border-slate-100 italic font-serif text-slate-700"
+    },
+    "inputs": {
+      "default": "bg-white border-slate-200 focus:border-teal-500 focus:ring-teal-500/20 rounded-xl h-12"
+    }
+  },
+  "image_urls": {
+    "logo": "https://customer-assets.emergentagent.com/job_e25f4938-63ae-489b-883f-4f66aba6c472/artifacts/mep23d7b_Logo%20autorizado%20perfil.png",
+    "doctor_operating_room": "https://customer-assets.emergentagent.com/job_e25f4938-63ae-489b-883f-4f66aba6c472/artifacts/e78w837i_Quirofano.png",
+    "hero_active_senior": "https://images.unsplash.com/photo-1542286379-57e115f586ae?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzF8MHwxfHNlYXJjaHwyfHxhY3RpdmUlMjBlbGRlcmx5JTIwd29tYW4lMjBoaWtpbmd8ZW58MHx8fHwxNzcyODE5OTEwfDA&ixlib=rb-4.1.0&q=85",
+    "knee_pain_consultation": "https://images.unsplash.com/photo-1649751361457-01d3a696c7e6?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzNDR8MHwxfHNlYXJjaHwyfHxrbmVlJTIwcGFpbnxlbnwwfHx8fDE3NzI4MTk5MDJ8MA&ixlib=rb-4.1.0&q=85",
+    "hospital_building": "https://images.pexels.com/photos/18435276/pexels-photo-18435276.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "consultation_room": "https://images.pexels.com/photos/5619462/pexels-photo-5619462.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+  },
+  "instructions_to_main_agent": [
+    "Use 'Manrope' from Google Fonts for all headings to establish a modern, clinical, yet friendly tone.",
+    "Use 'Inter' for body text for maximum legibility.",
+    "Implement a 'Bento Grid' layout for the Services section to break monotony.",
+    "The Hero section should feature the 'Active Senior' image to sell the outcome (mobility), not the process (surgery).",
+    "The 'About Doctor' section MUST use the user-provided 'Quirofano' (Operating Room) photo to establish extreme authority.",
+    "Use the Teal color (#0D9488) sparingly as an accent (buttons, icons, highlights), NOT as a primary background.",
+    "Ensure the 'WhatsApp' button is floating fixed at the bottom right with a z-index of 50.",
+    "The Contact Form must include the Privacy Policy checkbox as per legal requirements.",
+    "Use framer-motion for subtle entrance animations (fade-up) on scroll.",
+    "Integrate the Google Calendar link as a primary CTA in the Hero and Contact sections.",
+    "Mobile Responsiveness is paramount; ensure touch targets are at least 44px."
+  ],
+  "universal_guidelines": [
+    "Do not use generic centered layouts; use asymmetry and whitespace.",
+    "Dark colors look good when used independently without gradients.",
+    "Every interaction needs micro-animations.",
+    "Use 2-3x more spacing than feels comfortable.",
+    "Subtle grain textures or noise overlays can add a premium feel.",
+    "All interactive elements MUST include data-testid attributes."
+  ]
+}
