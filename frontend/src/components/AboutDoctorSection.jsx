@@ -7,6 +7,7 @@ const CALENDAR_URL = "https://calendar.app.google/1UDSSAzi7LHhgGYHA";
 const DOCTOR_IMAGE = "https://customer-assets.emergentagent.com/job_e25f4938-63ae-489b-883f-4f66aba6c472/artifacts/e78w837i_Quirofano.png";
 const COLEGIO_LOGO = "https://customer-assets.emergentagent.com/job_joint-therapy-mx/artifacts/l3akv2mz_Colegio%20Mexicano%20de%20Ortopedia.jpg";
 const CONSEJO_LOGO = "https://customer-assets.emergentagent.com/job_joint-therapy-mx/artifacts/c1weaudv_Consejo%20Mexicano%20Ortopedia%20Y%20Traumatologia.png";
+const ESCUELA_MILITAR_LOGO = "https://customer-assets.emergentagent.com/job_joint-therapy-mx/artifacts/tqb661z9_Escuela_M%C3%A9dico_Militar.svg.png";
 
 const credentials = [
   {
@@ -81,14 +82,19 @@ const AboutDoctorSection = () => {
             {/* Certifications Badges */}
             <div className="flex items-center gap-4 mb-6 p-4 bg-white rounded-xl border border-slate-100">
               <img 
+                src={ESCUELA_MILITAR_LOGO} 
+                alt="Escuela Médico Militar" 
+                className="h-14 w-14 object-contain rounded-lg"
+              />
+              <img 
                 src={COLEGIO_LOGO} 
                 alt="Colegio Mexicano de Ortopedia y Traumatología" 
-                className="h-16 w-auto object-contain"
+                className="h-14 w-auto object-contain"
               />
               <img 
                 src={CONSEJO_LOGO} 
                 alt="Consejo Mexicano de Ortopedia y Traumatología" 
-                className="h-16 w-auto object-contain"
+                className="h-14 w-auto object-contain"
               />
               <div className="flex items-center gap-2 text-sm text-slate-600">
                 <ShieldCheck className="w-5 h-5 text-teal-600" />
