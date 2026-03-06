@@ -1,34 +1,177 @@
-.App-logo {
-    height: 40vmin;
-    pointer-events: none;
+/* App-specific styles for Radiofrecuencia Articular Landing Page */
+
+/* Hero Section Background */
+.hero-gradient {
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(15, 23, 42, 0.7) 50%, rgba(15, 23, 42, 0.4) 100%);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-        animation: App-logo-spin infinite 20s linear;
-    }
+/* Service Card Hover Effects */
+.service-card {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.App-header {
-    background-color: #0f0f10;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
+.service-card:hover {
+  transform: translateY(-4px);
 }
 
-.App-link {
-    color: #61dafb;
+.service-card:hover .service-icon {
+  transform: scale(1.1);
+  color: #0D9488;
 }
 
-@keyframes App-logo-spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+/* WhatsApp Button */
+.whatsapp-float {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 50;
+  transition: transform 0.3s ease;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1);
+}
+
+/* Navigation scroll effect */
+.nav-scrolled {
+  backdrop-filter: blur(12px);
+  background-color: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
+}
+
+/* Section transitions */
+.section-fade {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.section-fade.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Form input focus states */
+.form-input:focus {
+  border-color: #0D9488;
+  box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.1);
+}
+
+/* Accordion custom styles */
+.faq-accordion [data-state="open"] .accordion-chevron {
+  transform: rotate(180deg);
+}
+
+/* Bento Grid Layout */
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .bento-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .bento-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Premium shadow effect */
+.premium-shadow {
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.3s ease;
+}
+
+.premium-shadow:hover {
+  box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.1);
+}
+
+/* Text gradient effect */
+.text-gradient {
+  background: linear-gradient(135deg, #0F172A 0%, #0D9488 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Button shine effect */
+.btn-shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-shine::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    to bottom right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.1) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: rotate(45deg) translateX(-100%);
+  transition: transform 0.6s ease;
+}
+
+.btn-shine:hover::after {
+  transform: rotate(45deg) translateX(100%);
+}
+
+/* Mobile menu animation */
+.mobile-menu-enter {
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+.mobile-menu-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Doctor photo container */
+.doctor-photo-container {
+  position: relative;
+}
+
+.doctor-photo-container::before {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  background: linear-gradient(135deg, #0D9488 0%, transparent 50%);
+  border-radius: 1rem;
+  z-index: -1;
+  opacity: 0.3;
+}
+
+/* Location card */
+.location-card {
+  background: linear-gradient(135deg, #F8FAFC 0%, #FFFFFF 100%);
+}
+
+/* CTA section gradient */
+.cta-gradient {
+  background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+}
+
+/* Responsive font sizes */
+@media (max-width: 640px) {
+  .hero-title {
+    font-size: 2rem;
+    line-height: 1.2;
+  }
+  
+  .section-title {
+    font-size: 1.75rem;
+  }
 }
