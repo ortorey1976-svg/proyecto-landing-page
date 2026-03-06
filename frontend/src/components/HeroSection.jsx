@@ -104,12 +104,7 @@ const HeroSection = () => {
               años de experiencia
             </div>
             <div className="flex items-center">
-              <span className="text-3xl font-bold text-white mr-2">3</span>
-              especialidades
-            </div>
-            <div className="flex items-center">
-              <span className="text-3xl font-bold text-white mr-2">16+</span>
-              años atendidos
+              <span className="text-white">Especialista en Ortopedia y Traumatología</span>
             </div>
           </div>
         </div>
