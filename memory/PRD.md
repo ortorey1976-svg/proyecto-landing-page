@@ -1,38 +1,40 @@
 # PRD - Landing Page Radiofrecuencia Articular
 
 ## Problem Statement Original
-Landing page premium para consultorio en Mérida, Yucatán, bajo la marca **Radiofrecuencia Articular**. Imagen médica de alto nivel, moderna, limpia y confiable. Objetivo: captar pacientes y convertirlos en contacto por WhatsApp 999-635-9889 o citas agendadas por Google Calendar. Enfocado en rodilla, cadera y hombro.
+Landing page premium para consultorio en Mérida, Yucatán, bajo la marca **Radiofrecuencia Articular**. Imagen médica de alto nivel, moderna, limpia y confiable. Objetivo: captar pacientes y convertirlos en contacto por WhatsApp 999-635-9889 o citas agendadas por Google Calendar.
 
 ## User Personas
 - **Primario**: Pacientes 16+ con dolor, lesión o desgaste en rodilla, cadera, hombro
 - **Secundario**: Familiares buscando atención para otros, personas buscando segunda opinión
-- **Perfil**: Valora atención especializada, experiencia premium, rapidez para agendar
-
-## Core Requirements (Static)
-- Hero con CTAs de WhatsApp y Google Calendar
-- Sección de problemas que atiende (rodilla, cadera, hombro)
-- 8 servicios (Artroscopia, Radiofrecuencia, Reemplazo)
-- Sección Sobre el Doctor con foto y credenciales
-- Proceso de 3 pasos
-- Ubicación y horarios (Torre Cenit Medical Center, Altabrisa)
-- Formulario de contacto con checkbox de privacidad
-- FAQ con accordion
-- Footer con disclaimer médico
-- Botón flotante de WhatsApp
 
 ## What's Been Implemented (Dec 2025)
-- ✅ Landing page completa con todas las secciones
+
+### Iteración 1 - MVP
+- ✅ Landing page completa con todas las secciones base
 - ✅ Backend FastAPI con endpoint /api/contact
 - ✅ Formulario de contacto almacena leads en MongoDB
-- ✅ Navbar con navegación suave y CTAs
-- ✅ Hero premium con imagen de fondo
-- ✅ Sección de servicios en grid (Bento style)
-- ✅ Sección del Doctor con foto del quirófano
-- ✅ Ubicación con horarios dinámicos (marca día actual)
-- ✅ FAQ con accordion de shadcn
-- ✅ Footer con aviso de privacidad y disclaimer médico
-- ✅ Botón flotante de WhatsApp
-- ✅ Diseño responsive mobile-first
+
+### Iteración 2 - Mejoras UX/Conversión (20 items)
+- ✅ **Hero**: Foto real del Dr. Cardenas con equipo de radiofrecuencia
+- ✅ **Trust indicators**: "20+ años · 2,000+ procedimientos · Especialista en Ortopedia y Traumatología"
+- ✅ **Testimonios**: 3 reseñas de pacientes con estrellas y procedimientos
+- ✅ **Doctor**: Nombre completo "Dr. Armando Cardenas"
+- ✅ **Doctor**: Cédula Prof. 2930543, Especialidad 6075243
+- ✅ **Doctor**: Logos del Colegio y Consejo Mexicano de Ortopedia
+- ✅ **Servicios**: Botones teal "Consultar por WhatsApp"
+- ✅ **Servicios**: Enlaces WhatsApp específicos por área (rodilla/cadera/hombro)
+- ✅ **Servicios**: Tags de beneficios (Sin hospitalización, Ambulatorio, etc)
+- ✅ **Proceso**: Colores uniformes en teal
+- ✅ **Ubicación**: Mapa de Google Maps embebido
+- ✅ **Formulario**: Título "Solicita tu valoración"
+- ✅ **Formulario**: Botón teal activo
+- ✅ **Footer**: Logo visible en fondo blanco
+- ✅ **Footer**: Cédulas del doctor
+- ✅ **SEO**: Title optimizado para búsquedas locales
+- ✅ **SEO**: Meta description médica
+- ✅ **SEO**: Schema.org MedicalBusiness + Physician
+- ✅ **SEO**: Open Graph y Twitter Cards
+- ✅ Espaciado vertical reducido entre secciones
 
 ## Technical Stack
 - Frontend: React + Tailwind + Shadcn UI
@@ -42,6 +44,9 @@ Landing page premium para consultorio en Mérida, Yucatán, bajo la marca **Radi
 
 ## Integration Details
 - WhatsApp: https://wa.me/529996359889
+- WhatsApp Rodilla: https://wa.me/529996359889?text=Hola%2C+me+interesa+una+valoraci%C3%B3n+para+*rodilla*
+- WhatsApp Cadera: https://wa.me/529996359889?text=Hola%2C+me+interesa+una+valoraci%C3%B3n+para+*cadera*
+- WhatsApp Hombro: https://wa.me/529996359889?text=Hola%2C+me+interesa+una+valoraci%C3%B3n+para+*hombro*
 - Google Calendar: https://calendar.app.google/1UDSSAzi7LHhgGYHA
 - Aviso de Privacidad: https://ortorey1976-svg.github.io/privacidad-datos/
 - Email: citas@radiofrecuenciaarticular.com.mx
@@ -49,18 +54,15 @@ Landing page premium para consultorio en Mérida, Yucatán, bajo la marca **Radi
 ## Prioritized Backlog
 
 ### P0 - Completado ✅
-- Landing page funcional
-- Formulario de contacto
-- Todas las secciones
+Todo implementado
 
 ### P1 - Próximas mejoras sugeridas
-- Integración de Google Analytics 4 / GTM
-- Meta Pixel para tracking de conversiones
-- SEO on-page (meta tags, schema.org)
-- Integración de email para notificación de leads
+- Integración de Google Analytics 4 / GTM para tracking
+- Meta Pixel para campañas de publicidad
+- Notificación por email cuando llegue nuevo lead
+- Testimonios reales extraídos de Google Reviews
 
 ### P2 - Futuro
 - Blog con contenido educativo
-- Testimonios de pacientes
 - Chat en vivo
 - Portal de pacientes
