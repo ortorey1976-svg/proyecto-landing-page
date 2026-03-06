@@ -1,10 +1,9 @@
 import React from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { MapPin, Clock, Phone, Mail, ExternalLink } from "lucide-react";
+import { MapPin, Clock, Phone, Mail, ExternalLink, ShieldCheck } from "lucide-react";
 
-const GOOGLE_MAPS_URL = "https://maps.google.com/?q=Torre+Cenit+Medical+Center+Altabrisa+Merida";
-const GOOGLE_MAPS_EMBED = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.5!2d-89.5954!3d21.0!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sTorre%20Cenit%20Medical%20Center!5e0!3m2!1ses!2smx!4v1234567890";
+const GOOGLE_MAPS_URL = "https://www.google.com/maps/search/?api=1&query=21.0190163,-89.5859909";
 
 const schedule = [
   { day: "Lunes", hours: "10:00 - 14:00" },
@@ -15,6 +14,8 @@ const schedule = [
   { day: "Sábado", hours: "Cerrado" },
   { day: "Domingo", hours: "Cerrado" }
 ];
+
+const insurances = ["GNP Seguros", "AXA Seguros", "MAPFRE", "Seguros Atlas", "MetLife México", "Zurich", "Allianz"];
 
 const LocationSection = () => {
   const today = new Date().getDay();
@@ -42,14 +43,14 @@ const LocationSection = () => {
             {/* Google Maps Embed */}
             <div className="relative h-64 bg-slate-200">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.8876!2d-89.5954!3d20.9876!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f5671c5d98e5c41%3A0x123456789!2sTorre%20Cenit%20Medical%20Center!5e0!3m2!1ses-419!2smx!4v1700000000000!5m2!1ses-419!2smx"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.8876!2d-89.5859909!3d21.0190163!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f5671c5d98e5c41%3A0x0!2sTorre%20Cenit%20Medical%20Center!5e0!3m2!1ses-419!2smx!4v1700000000000!5m2!1ses-419!2smx"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
                 allowFullScreen=""
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                title="Ubicación Torre Cenit Medical Center"
+                title="Ubicación Torre Cenit Medical Center - Consultorio 1114"
                 className="absolute inset-0"
               />
             </div>
@@ -118,62 +119,97 @@ const LocationSection = () => {
             </CardContent>
           </Card>
 
-          {/* Schedule Card */}
-          <Card className="border-slate-100" data-testid="schedule-card">
-            <CardContent className="p-6">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-10 h-10 rounded-lg bg-teal-50 flex items-center justify-center">
-                  <Clock className="w-5 h-5 text-teal-600" />
-                </div>
-                <div>
-                  <h3 className="font-semibold text-slate-900">Horarios de Atención</h3>
-                  <p className="text-sm text-slate-500">Consulta presencial en Mérida</p>
-                </div>
-              </div>
-
-              <div className="space-y-2">
-                {schedule.map((item, index) => (
-                  <div
-                    key={index}
-                    className={`flex items-center justify-between p-3 rounded-xl transition-colors ${
-                      index === dayIndex
-                        ? "bg-teal-50 border border-teal-100"
-                        : "hover:bg-slate-50"
-                    }`}
-                    data-testid={`schedule-${item.day.toLowerCase()}`}
-                  >
-                    <span className={`font-medium ${
-                      index === dayIndex ? "text-teal-700" : "text-slate-700"
-                    }`}>
-                      {item.day}
-                      {index === dayIndex && (
-                        <span className="ml-2 text-xs bg-teal-600 text-white px-2 py-0.5 rounded-full">
-                          Hoy
-                        </span>
-                      )}
-                    </span>
-                    <span className={`text-sm ${
-                      item.hours === "Cerrado" 
-                        ? "text-slate-400" 
-                        : index === dayIndex 
-                          ? "text-teal-600 font-medium" 
-                          : "text-slate-600"
-                    }`}>
-                      {item.hours}
-                    </span>
+          {/* Schedule & Insurance Card */}
+          <div className="space-y-6">
+            {/* Schedule */}
+            <Card className="border-slate-100" data-testid="schedule-card">
+              <CardContent className="p-6">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-10 h-10 rounded-lg bg-teal-50 flex items-center justify-center">
+                    <Clock className="w-5 h-5 text-teal-600" />
                   </div>
-                ))}
-              </div>
+                  <div>
+                    <h3 className="font-semibold text-slate-900">Horarios de Atención</h3>
+                    <p className="text-sm text-slate-500">Consulta presencial con previa cita</p>
+                  </div>
+                </div>
 
-              {/* Note */}
-              <div className="mt-6 p-4 bg-amber-50 rounded-xl">
-                <p className="text-sm text-amber-800">
-                  <strong>Nota:</strong> Para horarios fuera de agenda o urgencias, 
-                  contáctanos por WhatsApp.
+                <div className="space-y-2">
+                  {schedule.map((item, index) => (
+                    <div
+                      key={index}
+                      className={`flex items-center justify-between p-2 rounded-lg transition-colors ${
+                        index === dayIndex
+                          ? "bg-teal-50 border border-teal-100"
+                          : "hover:bg-slate-50"
+                      }`}
+                      data-testid={`schedule-${item.day.toLowerCase()}`}
+                    >
+                      <span className={`font-medium text-sm ${
+                        index === dayIndex ? "text-teal-700" : "text-slate-700"
+                      }`}>
+                        {item.day}
+                        {index === dayIndex && (
+                          <span className="ml-2 text-xs bg-teal-600 text-white px-2 py-0.5 rounded-full">
+                            Hoy
+                          </span>
+                        )}
+                      </span>
+                      <span className={`text-sm ${
+                        item.hours === "Cerrado" 
+                          ? "text-slate-400" 
+                          : index === dayIndex 
+                            ? "text-teal-600 font-medium" 
+                            : "text-slate-600"
+                      }`}>
+                        {item.hours}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Note */}
+                <div className="mt-4 p-3 bg-amber-50 rounded-xl">
+                  <p className="text-sm text-amber-800">
+                    <strong>Nota:</strong> Para fechas adicionales o urgencias, contáctanos por WhatsApp.
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Insurance Card */}
+            <Card className="border-slate-100" data-testid="insurance-card">
+              <CardContent className="p-6">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-10 h-10 rounded-lg bg-blue-50 flex items-center justify-center">
+                    <ShieldCheck className="w-5 h-5 text-blue-600" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-slate-900">Seguros Médicos</h3>
+                    <p className="text-sm text-slate-500">Aceptamos las principales aseguradoras</p>
+                  </div>
+                </div>
+
+                <div className="flex flex-wrap gap-2">
+                  {insurances.map((insurance, index) => (
+                    <span
+                      key={index}
+                      className="px-3 py-1 bg-blue-50 text-blue-700 text-sm rounded-full"
+                    >
+                      {insurance}
+                    </span>
+                  ))}
+                  <span className="px-3 py-1 bg-slate-100 text-slate-600 text-sm rounded-full">
+                    +5 más
+                  </span>
+                </div>
+
+                <p className="mt-3 text-xs text-slate-500">
+                  La cobertura varía según tu póliza. Contáctanos con los datos de tu seguro para verificar.
                 </p>
-              </div>
-            </CardContent>
-          </Card>
+              </CardContent>
+            </Card>
+          </div>
         </div>
       </div>
     </section>

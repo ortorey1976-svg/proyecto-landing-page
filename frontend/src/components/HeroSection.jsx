@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
-import { Calendar, MessageCircle, ChevronDown } from "lucide-react";
+import { Calendar, MessageCircle, ChevronDown, CalendarCheck } from "lucide-react";
 
 const WHATSAPP_URL = "https://wa.me/529996359889?text=Hola,%20quiero%20información%20sobre%20una%20consulta";
 const CALENDAR_URL = "https://calendar.app.google/1UDSSAzi7LHhgGYHA";
@@ -24,7 +24,7 @@ const HeroSection = () => {
       <div className="absolute inset-0">
         <img
           src={HERO_IMAGE}
-          alt="Dr. Armando Cardenas con equipo de radiofrecuencia"
+          alt="Dr. Armando Cárdenas con equipo de radiofrecuencia"
           className="w-full h-full object-cover object-top"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-slate-900/95 via-slate-900/80 to-slate-900/40" />
@@ -56,13 +56,22 @@ const HeroSection = () => {
 
           {/* Subheadline */}
           <p 
-            className="text-lg sm:text-xl text-slate-300 leading-relaxed mb-10 max-w-2xl animate-fade-in-up animate-delay-200"
+            className="text-lg sm:text-xl text-slate-300 leading-relaxed mb-8 max-w-2xl animate-fade-in-up animate-delay-200"
             data-testid="hero-subheadline"
           >
             Consulta ortopédica con enfoque en radiofrecuencia articular, 
             artroscopia y reemplazo articular, en un consultorio premium 
             con atención personalizada.
           </p>
+
+          {/* Urgency/Availability Badge */}
+          <div 
+            className="inline-flex items-center gap-2 bg-amber-500/20 border border-amber-500/30 text-amber-300 px-4 py-2 rounded-full mb-8 animate-fade-in-up animate-delay-200"
+            data-testid="availability-badge"
+          >
+            <CalendarCheck className="w-4 h-4" />
+            <span className="text-sm font-medium">Próximas citas disponibles: Lunes y Miércoles</span>
+          </div>
 
           {/* CTAs */}
           <div 

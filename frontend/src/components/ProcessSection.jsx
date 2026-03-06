@@ -1,24 +1,27 @@
 import React from "react";
-import { MessageCircle, FileText, Stethoscope } from "lucide-react";
+import { MessageCircle, FileText, Stethoscope, Clock } from "lucide-react";
 
 const steps = [
   {
     number: "01",
     icon: MessageCircle,
     title: "Contáctanos",
-    description: "Escríbenos por WhatsApp o agenda tu cita directamente en línea. Es rápido y sencillo."
+    description: "Escríbenos por WhatsApp o agenda tu cita en línea.",
+    detail: "Respuesta en menos de 2 horas en horario de atención"
   },
   {
     number: "02",
     icon: FileText,
     title: "Comparte tu caso",
-    description: "Cuéntanos el motivo de tu consulta para preparar tu valoración de manera personalizada."
+    description: "Te enviamos un breve cuestionario por WhatsApp.",
+    detail: "Nos ayuda a preparar tu valoración personalizada"
   },
   {
     number: "03",
     icon: Stethoscope,
-    title: "Recibe orientación",
-    description: "Acude a tu valoración presencial donde evaluaremos tu caso y te presentaremos opciones de tratamiento."
+    title: "Valoración presencial",
+    description: "Acude a tu cita donde evaluamos tu caso a detalle.",
+    detail: "Duración aproximada: 45 minutos"
   }
 ];
 
@@ -39,7 +42,7 @@ const ProcessSection = () => {
           </p>
         </div>
 
-        {/* Steps - Todos en color teal */}
+        {/* Steps */}
         <div className="grid md:grid-cols-3 gap-8 lg:gap-12">
           {steps.map((step, index) => (
             <div 
@@ -52,7 +55,7 @@ const ProcessSection = () => {
                 <div className="hidden md:block absolute top-16 left-1/2 w-full h-0.5 bg-teal-100" />
               )}
 
-              {/* Step number */}
+              {/* Step icon */}
               <div className="relative inline-flex">
                 <div className="w-32 h-32 rounded-3xl flex items-center justify-center mb-6 transition-all duration-300 group-hover:scale-105 bg-teal-50 group-hover:bg-teal-100">
                   <step.icon className="w-12 h-12 text-teal-600" />
@@ -63,12 +66,18 @@ const ProcessSection = () => {
               </div>
 
               {/* Content */}
-              <h3 className="text-xl font-semibold text-slate-900 mb-3">
+              <h3 className="text-xl font-semibold text-slate-900 mb-2">
                 {step.title}
               </h3>
-              <p className="text-slate-600 leading-relaxed max-w-xs mx-auto">
+              <p className="text-slate-600 leading-relaxed max-w-xs mx-auto mb-2">
                 {step.description}
               </p>
+              
+              {/* Time/Detail indicator */}
+              <div className="inline-flex items-center gap-1 text-sm text-teal-600 bg-teal-50 px-3 py-1 rounded-full">
+                <Clock className="w-3 h-3" />
+                <span>{step.detail}</span>
+              </div>
             </div>
           ))}
         </div>

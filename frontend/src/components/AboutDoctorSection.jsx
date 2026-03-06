@@ -48,7 +48,7 @@ const AboutDoctorSection = () => {
             <div className="doctor-photo-container">
               <img
                 src={DOCTOR_IMAGE}
-                alt="Dr. Armando Cardenas en quirófano"
+                alt="Dr. Armando Cárdenas en quirófano"
                 className="w-full rounded-2xl shadow-2xl"
                 data-testid="doctor-image"
               />
@@ -73,7 +73,7 @@ const AboutDoctorSection = () => {
               Sobre el Doctor
             </span>
             <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-2" data-testid="doctor-title">
-              Dr. Armando Cardenas
+              Dr. Armando Cárdenas
             </h2>
             <p className="text-lg text-teal-600 font-medium mb-6">
               Cirujano Ortopedista especializado en cadera, rodilla y hombro

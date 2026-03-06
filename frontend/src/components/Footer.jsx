@@ -83,7 +83,7 @@ const Footer = () => {
               en Mérida, Yucatán.
             </p>
             <p className="text-slate-500 text-xs">
-              Dr. Armando Cardenas<br />
+              Dr. Armando Cárdenas<br />
               Cédula Prof. 2930543<br />
               Especialidad 6075243
             </p>

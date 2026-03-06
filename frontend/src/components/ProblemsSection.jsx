@@ -1,25 +1,49 @@
 import React from "react";
 import { Card, CardContent } from "@/components/ui/card";
-import { AlertCircle, Activity, TrendingDown } from "lucide-react";
 
 const problems = [
   {
-    icon: AlertCircle,
     title: "Dolor persistente",
     description: "Molestias constantes en rodilla, cadera o hombro que limitan tu día a día y no mejoran con el tiempo.",
-    areas: ["Rodilla", "Cadera", "Hombro"]
+    areas: ["Rodilla", "Cadera", "Hombro"],
+    icon: (
+      <svg viewBox="0 0 100 100" className="w-full h-full">
+        <circle cx="50" cy="30" r="8" fill="#0d9488" opacity="0.3"/>
+        <circle cx="50" cy="30" r="4" fill="#0d9488"/>
+        <path d="M50 38 L50 55 M35 45 L65 45 M50 55 L40 75 M50 55 L60 75" stroke="#0d9488" strokeWidth="3" fill="none" strokeLinecap="round"/>
+        <circle cx="45" cy="50" r="6" fill="#ef4444" opacity="0.5"/>
+        <circle cx="45" cy="50" r="3" fill="#ef4444"/>
+      </svg>
+    )
   },
   {
-    icon: Activity,
     title: "Lesiones o inflamación",
     description: "Daño por accidentes, desgaste deportivo o condiciones crónicas que requieren atención especializada.",
-    areas: ["Menisco", "Ligamentos", "Manguito rotador"]
+    areas: ["Menisco", "Ligamentos", "Manguito rotador"],
+    icon: (
+      <svg viewBox="0 0 100 100" className="w-full h-full">
+        <ellipse cx="50" cy="50" rx="25" ry="35" fill="none" stroke="#0d9488" strokeWidth="2"/>
+        <ellipse cx="50" cy="50" rx="15" ry="20" fill="#0d9488" opacity="0.2"/>
+        <path d="M35 45 Q50 35 65 45" stroke="#ef4444" strokeWidth="3" fill="none"/>
+        <circle cx="50" cy="40" r="4" fill="#ef4444"/>
+      </svg>
+    )
   },
   {
-    icon: TrendingDown,
     title: "Pérdida de movilidad",
     description: "Dificultad para caminar, subir escaleras, levantar objetos o realizar actividades cotidianas.",
-    areas: ["Rigidez", "Debilidad", "Limitación funcional"]
+    areas: ["Rigidez", "Debilidad", "Limitación funcional"],
+    icon: (
+      <svg viewBox="0 0 100 100" className="w-full h-full">
+        <circle cx="50" cy="25" r="10" fill="#0d9488" opacity="0.3"/>
+        <path d="M50 35 L50 55" stroke="#0d9488" strokeWidth="3" fill="none"/>
+        <path d="M35 42 L50 42 L65 42" stroke="#0d9488" strokeWidth="3" fill="none" strokeLinecap="round"/>
+        <path d="M50 55 L40 80" stroke="#0d9488" strokeWidth="3" fill="none" strokeLinecap="round"/>
+        <path d="M50 55 L60 80" stroke="#94a3b8" strokeWidth="3" fill="none" strokeLinecap="round" strokeDasharray="4 4"/>
+        <path d="M55 70 L70 65" stroke="#94a3b8" strokeWidth="2" fill="none"/>
+        <path d="M58 73 L73 68" stroke="#94a3b8" strokeWidth="2" fill="none"/>
+      </svg>
+    )
   }
 ];
 
@@ -50,21 +74,21 @@ const ProblemsSection = () => {
               data-testid={`problem-card-${index}`}
             >
               <CardContent className="p-6">
-                {/* Icon */}
-                <div className="w-14 h-14 rounded-2xl bg-teal-50 flex items-center justify-center mb-5 group-hover:bg-teal-100 transition-colors">
-                  <problem.icon className="w-7 h-7 text-teal-600" />
+                {/* Anatomical Icon */}
+                <div className="w-20 h-20 mx-auto mb-5 group-hover:scale-105 transition-transform">
+                  {problem.icon}
                 </div>
 
                 {/* Content */}
-                <h3 className="text-xl font-semibold text-slate-900 mb-3">
+                <h3 className="text-xl font-semibold text-slate-900 mb-3 text-center">
                   {problem.title}
                 </h3>
-                <p className="text-slate-600 mb-5 leading-relaxed">
+                <p className="text-slate-600 mb-5 leading-relaxed text-center">
                   {problem.description}
                 </p>
 
                 {/* Tags */}
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-2 justify-center">
                   {problem.areas.map((area, areaIndex) => (
                     <span
                       key={areaIndex}
