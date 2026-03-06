@@ -4,7 +4,7 @@ import { Menu, X, Calendar, MessageCircle } from "lucide-react";
 
 const WHATSAPP_URL = "https://wa.me/529996359889?text=Hola,%20quiero%20información%20sobre%20una%20consulta";
 const CALENDAR_URL = "https://calendar.app.google/1UDSSAzi7LHhgGYHA";
-const LOGO_URL = "https://customer-assets.emergentagent.com/job_e25f4938-63ae-489b-883f-4f66aba6c472/artifacts/mep23d7b_Logo%20autorizado%20perfil.png";
+const LOGO_URL = "https://customer-assets.emergentagent.com/job_joint-therapy-mx/artifacts/nfygiawx_Logo%20sencillo%20pro%20%20autorizado.png";
 
 const navLinks = [
   { href: "#inicio", label: "Inicio" },
