@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Calendar, MessageCircle, ChevronDown, CalendarCheck } from "lucide-react";
 
 const WHATSAPP_URL = "https://wa.me/529996359889?text=Hola,%20quiero%20información%20sobre%20una%20consulta";
-const CALENDAR_URL = "https://calendar.app.google/1UDSSAzi7LHhgGYHA";
+const CALENDAR_URL = "https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ3cHH1hiYntiDQrby4vJLKpUAuFChAX5j-q4fL7VsoLRh1cJQqn4_KFAFZukXnU3PEoJ7KYpC2s";
 const HERO_IMAGE = "https://customer-assets.emergentagent.com/job_joint-therapy-mx/artifacts/ksgdkdi3_Equipo%20de%20radiofrecuencia.jpg";
 
 const HeroSection = () => {

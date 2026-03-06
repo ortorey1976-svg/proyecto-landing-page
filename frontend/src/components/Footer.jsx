@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { MessageCircle, Calendar, MapPin, Clock, Mail, Phone, ExternalLink } from "lucide-react";
 
 const WHATSAPP_URL = "https://wa.me/529996359889?text=Hola,%20quiero%20información%20sobre%20una%20consulta";
-const CALENDAR_URL = "https://calendar.app.google/1UDSSAzi7LHhgGYHA";
+const CALENDAR_URL = "https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ3cHH1hiYntiDQrby4vJLKpUAuFChAX5j-q4fL7VsoLRh1cJQqn4_KFAFZukXnU3PEoJ7KYpC2s";
 const PRIVACY_URL = "https://ortorey1976-svg.github.io/privacidad-datos/";
 const LOGO_URL = "https://customer-assets.emergentagent.com/job_joint-therapy-mx/artifacts/nfygiawx_Logo%20sencillo%20pro%20%20autorizado.png";
 

@@ -18,7 +18,7 @@ import axios from "axios";
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
 const WHATSAPP_URL = "https://wa.me/529996359889?text=Hola,%20acabo%20de%20enviar%20el%20formulario%20de%20contacto";
-const CALENDAR_URL = "https://calendar.app.google/1UDSSAzi7LHhgGYHA";
+const CALENDAR_URL = "https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ3cHH1hiYntiDQrby4vJLKpUAuFChAX5j-q4fL7VsoLRh1cJQqn4_KFAFZukXnU3PEoJ7KYpC2s";
 const PRIVACY_URL = "https://ortorey1976-svg.github.io/privacidad-datos/";
 
 const ContactSection = () => {

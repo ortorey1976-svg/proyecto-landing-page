@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Calendar, MessageCircle, GraduationCap, Clock, Award, Heart, ShieldCheck } from "lucide-react";
 
 const WHATSAPP_URL = "https://wa.me/529996359889?text=Hola,%20quiero%20agendar%20una%20valoración";
-const CALENDAR_URL = "https://calendar.app.google/1UDSSAzi7LHhgGYHA";
+const CALENDAR_URL = "https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ3cHH1hiYntiDQrby4vJLKpUAuFChAX5j-q4fL7VsoLRh1cJQqn4_KFAFZukXnU3PEoJ7KYpC2s";
 const DOCTOR_IMAGE = "https://customer-assets.emergentagent.com/job_e25f4938-63ae-489b-883f-4f66aba6c472/artifacts/e78w837i_Quirofano.png";
 const COLEGIO_LOGO = "https://customer-assets.emergentagent.com/job_joint-therapy-mx/artifacts/l3akv2mz_Colegio%20Mexicano%20de%20Ortopedia.jpg";
 const CONSEJO_LOGO = "https://customer-assets.emergentagent.com/job_joint-therapy-mx/artifacts/c1weaudv_Consejo%20Mexicano%20Ortopedia%20Y%20Traumatologia.png";
