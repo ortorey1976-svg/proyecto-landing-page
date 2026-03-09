@@ -10,7 +10,9 @@ from pydantic import BaseModel, Field, ConfigDict, EmailStr
 from typing import List, Optional
 import uuid
 from datetime import datetime, timezone
-import resend
+import smtplib
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
 
 ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
@@ -20,10 +22,12 @@ mongo_url = os.environ['MONGO_URL']
 client = AsyncIOMotorClient(mongo_url)
 db = client[os.environ['DB_NAME']]
 
-# Resend configuration
-resend.api_key = os.environ.get('RESEND_API_KEY')
+# SMTP Configuration (Google Workspace Relay)
+SMTP_HOST = os.environ.get('SMTP_HOST', 'smtp-relay.gmail.com')
+SMTP_PORT = int(os.environ.get('SMTP_PORT', 587))
+SMTP_USER = os.environ.get('SMTP_USER', 'citas@radiofrecuenciaarticular.com.mx')
+SMTP_PASSWORD = os.environ.get('SMTP_PASSWORD', '')  # Empty for IP-based relay
 NOTIFICATION_EMAIL = os.environ.get('NOTIFICATION_EMAIL', 'citas@radiofrecuenciaarticular.com.mx')
-SENDER_EMAIL = "onboarding@resend.dev"
 
 # Create the main app without a prefix
 app = FastAPI()
@@ -74,15 +78,11 @@ class ContactFormResponse(BaseModel):
     acepta_privacidad: bool
     created_at: str
 
-# Email notification function
+# Email notification function using SMTP
 async def send_lead_notification(form_data: ContactFormCreate, contact_id: str):
     """
-    Envía notificación por email cuando llega un nuevo lead.
+    Envía notificación por email cuando llega un nuevo lead usando SMTP Relay.
     """
-    if not resend.api_key:
-        logger.warning("RESEND_API_KEY not configured, skipping email notification")
-        return
-    
     zona_emoji = {
         "rodilla": "🦵",
         "cadera": "🦴", 
@@ -173,17 +173,34 @@ async def send_lead_notification(form_data: ContactFormCreate, contact_id: str):
     </html>
     """
     
-    params = {
-        "from": SENDER_EMAIL,
-        "to": [NOTIFICATION_EMAIL],
-        "subject": f"🔔 Nuevo Lead: {form_data.nombre} - {form_data.zona_afectada.upper()}",
-        "html": html_content
-    }
+    def send_email():
+        """Función síncrona para enviar email via SMTP"""
+        msg = MIMEMultipart('alternative')
+        msg['From'] = SMTP_USER
+        msg['To'] = NOTIFICATION_EMAIL
+        msg['Subject'] = f"🔔 Nuevo Lead: {form_data.nombre} - {form_data.zona_afectada.upper()}"
+        
+        # Attach HTML content
+        msg.attach(MIMEText(html_content, 'html', 'utf-8'))
+        
+        try:
+            server = smtplib.SMTP(SMTP_HOST, SMTP_PORT)
+            server.starttls()  # Enable TLS
+            
+            # Only login if password is provided
+            if SMTP_PASSWORD:
+                server.login(SMTP_USER, SMTP_PASSWORD)
+            
+            server.send_message(msg)
+            server.quit()
+            return {"success": True, "message": "Email sent successfully"}
+        except Exception as e:
+            raise e
     
     try:
-        email_result = await asyncio.to_thread(resend.Emails.send, params)
-        logger.info(f"Email notification sent successfully: {email_result.get('id', 'unknown')}")
-        return email_result
+        result = await asyncio.to_thread(send_email)
+        logger.info(f"Email notification sent successfully to {NOTIFICATION_EMAIL}")
+        return result
     except Exception as e:
         logger.error(f"Failed to send email notification: {str(e)}")
         return None
@@ -274,6 +291,45 @@ async def get_contact_leads():
     """
     leads = await db.contact_leads.find({}, {"_id": 0}).to_list(1000)
     return leads
+
+# Test email endpoint
+@api_router.post("/test-email")
+async def test_email():
+    """
+    Endpoint para probar el envío de correo SMTP.
+    """
+    test_data = ContactFormCreate(
+        nombre="Prueba Sistema",
+        telefono="9991234567",
+        email="test@example.com",
+        motivo="Prueba de envío de correo",
+        zona_afectada="rodilla",
+        ciudad="Mérida",
+        mensaje="Este es un correo de prueba del sistema de notificaciones.",
+        acepta_privacidad=True
+    )
+    
+    try:
+        result = await send_lead_notification(test_data, "test-" + str(uuid.uuid4())[:8])
+        if result:
+            return {
+                "success": True, 
+                "message": f"Correo de prueba enviado a {NOTIFICATION_EMAIL}",
+                "smtp_config": {
+                    "host": SMTP_HOST,
+                    "port": SMTP_PORT,
+                    "user": SMTP_USER,
+                    "notification_email": NOTIFICATION_EMAIL
+                }
+            }
+        else:
+            return {
+                "success": False,
+                "message": "Error al enviar el correo. Revisa los logs del servidor."
+            }
+    except Exception as e:
+        logger.error(f"Test email error: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Error al enviar correo: {str(e)}")
 
 # Include the router in the main app
 app.include_router(api_router)
