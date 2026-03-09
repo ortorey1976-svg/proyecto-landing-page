@@ -164,11 +164,59 @@ frontend:
       - working: true
         agent: "testing"
         comment: "TESTED AND WORKING. Contact section 'Agendar Cita' button (data-testid='contact-calendar-btn') successfully opens appointment modal. Modal displays Google Calendar iframe correctly. ESC key close functionality verified."
+  
+  - task: "Floating WhatsApp Button"
+    implemented: true
+    working: true
+    file: "/app/frontend/src/components/WhatsAppButton.jsx"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "testing"
+        comment: "TESTED AND WORKING. Floating WhatsApp button (data-testid='whatsapp-float-btn') positioned in bottom right corner. Button has correct href='https://wa.me/529996359889?text=Hola,%20quiero%20información%20sobre%20una%20consulta', target='_blank', and rel='noopener noreferrer'. Button is visible, clickable, and properly styled with green color and hover effects."
+  
+  - task: "Hero Section - WhatsApp Button"
+    implemented: true
+    working: true
+    file: "/app/frontend/src/components/HeroSection.jsx"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "testing"
+        comment: "TESTED AND WORKING. Hero section WhatsApp button (data-testid='hero-whatsapp-btn') displays correctly. Button has correct href='https://wa.me/529996359889?text=Hola,%20quiero%20información%20sobre%20una%20consulta', target='_blank', and rel='noopener noreferrer'. Button is visible with teal styling and 'Enviar WhatsApp' text."
+  
+  - task: "Navbar - WhatsApp Buttons (desktop and mobile)"
+    implemented: true
+    working: true
+    file: "/app/frontend/src/components/Navbar.jsx"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "testing"
+        comment: "TESTED AND WORKING. Desktop navbar WhatsApp button (data-testid='nav-whatsapp-btn') and mobile menu WhatsApp button (data-testid='mobile-whatsapp-btn') both working correctly. Both have correct href='https://wa.me/529996359889?text=Hola,%20quiero%20información%20sobre%20una%20consulta', target='_blank', and rel='noopener noreferrer'. Mobile menu opens properly and displays button with 'Enviar WhatsApp' text. Desktop button visible in navbar with teal styling."
+  
+  - task: "Contact Section - WhatsApp Button"
+    implemented: true
+    working: true
+    file: "/app/frontend/src/components/ContactSection.jsx"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "testing"
+        comment: "TESTED AND WORKING. Contact section WhatsApp button (data-testid='contact-whatsapp-btn') displays correctly above contact form. Button has correct href='https://wa.me/529996359889?text=Hola,%20acabo%20de%20enviar%20el%20formulario%20de%20contacto', target='_blank', and rel='noopener noreferrer'. Button is visible with teal styling and 'Enviar WhatsApp' text."
 
 metadata:
   created_by: "main_agent"
   version: "1.0"
-  test_sequence: 2
+  test_sequence: 3
   run_ui: true
 
 test_plan:
@@ -182,3 +230,5 @@ agent_communication:
     message: "Implemented appointment modal popup for Google Calendar. All 'Agendar Cita' buttons now open a modal with the Google Calendar iframe. Please test: 1) Click hero section 'Agendar Cita' button, 2) Click navbar 'Agendar Cita' button (desktop), 3) Click navbar 'Agendar Cita' button (mobile), 4) Click contact section 'Agendar Cita' button. Verify modal opens correctly, shows calendar iframe, can be closed with X button, and is responsive."
   - agent: "testing"
     message: "TESTING COMPLETED SUCCESSFULLY. All appointment modal features are working correctly. Tested on URL: https://booking-modal-popup.preview.emergentagent.com. All four 'Agendar Cita' buttons (hero section, navbar desktop, navbar mobile, contact section) successfully open the modal. Modal displays Google Calendar iframe with correct URL, closes properly via X button, overlay click, and ESC key. Modal is properly styled with dark overlay and centered layout. Responsive on both desktop (1920x1080) and mobile (390x844) viewports. No console errors or failed network requests detected. All tests passed."
+  - agent: "testing"
+    message: "WHATSAPP BUTTONS TESTING COMPLETED SUCCESSFULLY. Tested all 5 WhatsApp buttons on URL: https://booking-modal-popup.preview.emergentagent.com. Results: 1) Floating WhatsApp Button (data-testid='whatsapp-float-btn') - WORKING ✓ (bottom right corner, green styled, correct href with number 529996359889, target='_blank'). 2) Hero Section WhatsApp Button (data-testid='hero-whatsapp-btn') - WORKING ✓ (teal styled, correct href, target='_blank'). 3) Navbar WhatsApp Button Desktop (data-testid='nav-whatsapp-btn') - WORKING ✓ (teal styled, correct href, target='_blank'). 4) Mobile Navbar WhatsApp Button (data-testid='mobile-whatsapp-btn') - WORKING ✓ (opens in mobile menu, teal styled, correct href, target='_blank'). 5) Contact Section WhatsApp Button (data-testid='contact-whatsapp-btn') - WORKING ✓ (teal styled, correct href with different text, target='_blank'). All buttons have proper attributes (href, target, rel), are visible, and clickable. No console errors. All tests passed (5/5)."
