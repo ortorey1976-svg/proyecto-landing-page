@@ -1,5 +1,7 @@
 import React from "react";
 import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { ArrowRight } from "lucide-react";
 
 const problems = [
   {
@@ -88,7 +90,7 @@ const ProblemsSection = () => {
                 </p>
 
                 {/* Tags */}
-                <div className="flex flex-wrap gap-2 justify-center">
+                <div className="flex flex-wrap gap-2 justify-center mb-4">
                   {problem.areas.map((area, areaIndex) => (
                     <span
                       key={areaIndex}
@@ -97,6 +99,24 @@ const ProblemsSection = () => {
                       {area}
                     </span>
                   ))}
+                </div>
+
+                {/* CTA Button */}
+                <div className="text-center">
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className="text-teal-600 hover:text-teal-700 hover:bg-teal-50 group/btn"
+                    onClick={() => {
+                      const element = document.querySelector("#servicios");
+                      if (element) {
+                        element.scrollIntoView({ behavior: "smooth" });
+                      }
+                    }}
+                  >
+                    Ver tratamientos
+                    <ArrowRight className="w-4 h-4 ml-1 group-hover/btn:translate-x-1 transition-transform" />
+                  </Button>
                 </div>
               </CardContent>
             </Card>

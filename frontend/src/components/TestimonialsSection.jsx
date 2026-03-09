@@ -34,10 +34,12 @@ const testimonials = [
     name: "Michael Zangrillo",
     location: "Mérida, Yucatán",
     rating: 5,
-    text: "Dr. Rey was very thorough in his examination and took his time explaining his diagnoses and the various potential methods of treatment. I was very happy with the visit and he receives my highest recommendation.",
+    text: "El Dr. Rey fue muy minucioso en su examen y se tomó el tiempo de explicar sus diagnósticos y los diversos métodos de tratamiento posibles. Quedé muy satisfecho con la visita y tiene mi más alta recomendación.",
+    originalText: "Dr. Rey was very thorough in his examination and took his time explaining his diagnoses and the various potential methods of treatment. I was very happy with the visit and he receives my highest recommendation.",
     procedure: "Consulta de valoración",
     date: "Febrero 2026",
-    verified: true
+    verified: true,
+    isTranslated: true
   },
   {
     name: "Juan Alberto Herrera",
@@ -114,9 +116,16 @@ const TestimonialsSection = () => {
                 </div>
 
                 {/* Text */}
-                <p className="text-slate-600 mb-5 leading-relaxed text-sm">
+                <p className="text-slate-600 mb-4 leading-relaxed text-sm">
                   "{testimonial.text}"
                 </p>
+                
+                {/* Translation Note */}
+                {testimonial.isTranslated && (
+                  <p className="text-xs text-slate-400 italic mb-4">
+                    (Traducido del inglés - Paciente extranjero)
+                  </p>
+                )}
 
                 {/* Procedure Badge */}
                 <div className="mb-4">

@@ -36,7 +36,7 @@ const AppointmentModal = ({ isOpen, onClose }) => {
 
   return (
     <div 
-      className="fixed inset-0 z-50 flex items-center justify-center"
+      className="fixed inset-0 z-[100] flex items-center justify-center"
       data-testid="appointment-modal"
     >
       {/* Overlay */}
@@ -46,14 +46,19 @@ const AppointmentModal = ({ isOpen, onClose }) => {
         data-testid="modal-overlay"
       />
       
-      {/* Modal Content */}
+      {/* Modal Content - Responsive height with scroll support */}
       <div 
-        className="relative bg-white rounded-2xl shadow-2xl w-[95vw] max-w-4xl h-[85vh] max-h-[700px] flex flex-col animate-fade-in-up overflow-hidden"
+        className="relative bg-white rounded-2xl shadow-2xl w-[95vw] max-w-4xl flex flex-col animate-fade-in-up overflow-hidden mx-4 my-4"
+        style={{ 
+          height: 'calc(100vh - 32px)', 
+          maxHeight: '900px',
+          minHeight: '500px'
+        }}
         data-testid="modal-content"
       >
-        {/* Header */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-slate-100 bg-slate-50">
-          <h2 className="text-xl font-bold text-slate-900">
+        {/* Header - Fixed */}
+        <div className="flex-shrink-0 flex items-center justify-between px-4 sm:px-6 py-3 border-b border-slate-100 bg-slate-50">
+          <h2 className="text-lg sm:text-xl font-bold text-slate-900">
             Agendar Cita
           </h2>
           <Button
@@ -68,20 +73,22 @@ const AppointmentModal = ({ isOpen, onClose }) => {
           </Button>
         </div>
         
-        {/* Calendar iframe */}
-        <div className="flex-1 p-2 sm:p-4 bg-white">
+        {/* Calendar iframe - Flexible height with internal scroll */}
+        <div className="flex-1 min-h-0 p-2 sm:p-4 bg-white overflow-hidden">
           <iframe
             src={APPOINTMENT_CALENDAR_URL}
             title="Agendar Cita - Google Calendar"
             className="w-full h-full rounded-lg border border-slate-200"
+            style={{ minHeight: '400px' }}
             frameBorder="0"
             allow="camera; microphone"
+            scrolling="yes"
             data-testid="calendar-iframe"
           />
         </div>
         
-        {/* Footer */}
-        <div className="px-6 py-3 border-t border-slate-100 bg-slate-50">
+        {/* Footer - Fixed */}
+        <div className="flex-shrink-0 px-4 sm:px-6 py-2 border-t border-slate-100 bg-slate-50">
           <p className="text-xs text-slate-500 text-center">
             Selecciona una fecha y hora disponible para tu cita con el Dr. Armando Cárdenas
           </p>

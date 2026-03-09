@@ -23,6 +23,7 @@ const PRIVACY_URL = "https://ortorey1976-svg.github.io/privacidad-datos/";
 const ContactSection = ({ onOpenAppointment }) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [touched, setTouched] = useState({});
   const [formData, setFormData] = useState({
     nombre: "",
     telefono: "",
@@ -34,13 +35,44 @@ const ContactSection = ({ onOpenAppointment }) => {
     acepta_privacidad: false
   });
 
+  // Validation functions
+  const validateField = (name, value) => {
+    switch (name) {
+      case 'nombre':
+        return value.length >= 2 ? '' : 'El nombre debe tener al menos 2 caracteres';
+      case 'telefono':
+        return /^[\d\s\-]{10,}$/.test(value) ? '' : 'Ingresa un teléfono válido (mínimo 10 dígitos)';
+      case 'email':
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value) ? '' : 'Ingresa un email válido';
+      case 'motivo':
+        return value.length >= 2 ? '' : 'Describe brevemente el motivo de tu consulta';
+      case 'zona_afectada':
+        return value ? '' : 'Selecciona una zona afectada';
+      case 'ciudad':
+        return value.length >= 2 ? '' : 'Ingresa tu ciudad';
+      default:
+        return '';
+    }
+  };
+
+  const getFieldError = (name) => {
+    if (!touched[name]) return '';
+    return validateField(name, formData[name]);
+  };
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
+  const handleBlur = (e) => {
+    const { name } = e.target;
+    setTouched(prev => ({ ...prev, [name]: true }));
+  };
+
   const handleSelectChange = (value) => {
     setFormData(prev => ({ ...prev, zona_afectada: value }));
+    setTouched(prev => ({ ...prev, zona_afectada: true }));
   };
 
   const handleCheckboxChange = (checked) => {
@@ -211,10 +243,14 @@ const ContactSection = ({ onOpenAppointment }) => {
                       required
                       value={formData.nombre}
                       onChange={handleChange}
+                      onBlur={handleBlur}
                       placeholder="Tu nombre"
-                      className="rounded-xl h-12"
+                      className={`rounded-xl h-12 ${getFieldError('nombre') ? 'border-red-500 focus:ring-red-500' : ''}`}
                       data-testid="input-nombre"
                     />
+                    {getFieldError('nombre') && (
+                      <p className="text-red-500 text-xs mt-1">{getFieldError('nombre')}</p>
+                    )}
                   </div>
 
                   {/* Phone & Email Row */}
@@ -230,10 +266,14 @@ const ContactSection = ({ onOpenAppointment }) => {
                         required
                         value={formData.telefono}
                         onChange={handleChange}
+                        onBlur={handleBlur}
                         placeholder="999-123-4567"
-                        className="rounded-xl h-12"
+                        className={`rounded-xl h-12 ${getFieldError('telefono') ? 'border-red-500 focus:ring-red-500' : ''}`}
                         data-testid="input-telefono"
                       />
+                      {getFieldError('telefono') && (
+                        <p className="text-red-500 text-xs mt-1">{getFieldError('telefono')}</p>
+                      )}
                     </div>
                     <div>
                       <label htmlFor="email" className="block text-sm font-medium text-slate-700 mb-2">
@@ -246,10 +286,14 @@ const ContactSection = ({ onOpenAppointment }) => {
                         required
                         value={formData.email}
                         onChange={handleChange}
+                        onBlur={handleBlur}
                         placeholder="tu@email.com"
-                        className="rounded-xl h-12"
+                        className={`rounded-xl h-12 ${getFieldError('email') ? 'border-red-500 focus:ring-red-500' : ''}`}
                         data-testid="input-email"
                       />
+                      {getFieldError('email') && (
+                        <p className="text-red-500 text-xs mt-1">{getFieldError('email')}</p>
+                      )}
                     </div>
                   </div>
 
@@ -265,10 +309,14 @@ const ContactSection = ({ onOpenAppointment }) => {
                       required
                       value={formData.motivo}
                       onChange={handleChange}
+                      onBlur={handleBlur}
                       placeholder="Ej: Dolor de rodilla, segunda opinión, etc."
-                      className="rounded-xl h-12"
+                      className={`rounded-xl h-12 ${getFieldError('motivo') ? 'border-red-500 focus:ring-red-500' : ''}`}
                       data-testid="input-motivo"
                     />
+                    {getFieldError('motivo') && (
+                      <p className="text-red-500 text-xs mt-1">{getFieldError('motivo')}</p>
+                    )}
                   </div>
 
                   {/* Zona & Ciudad Row */}
@@ -283,7 +331,7 @@ const ContactSection = ({ onOpenAppointment }) => {
                         required
                       >
                         <SelectTrigger 
-                          className="rounded-xl h-12"
+                          className={`rounded-xl h-12 ${getFieldError('zona_afectada') ? 'border-red-500 focus:ring-red-500' : ''}`}
                           data-testid="select-zona"
                         >
                           <SelectValue placeholder="Selecciona una zona" />
@@ -295,6 +343,9 @@ const ContactSection = ({ onOpenAppointment }) => {
                           <SelectItem value="otra">Otra</SelectItem>
                         </SelectContent>
                       </Select>
+                      {getFieldError('zona_afectada') && (
+                        <p className="text-red-500 text-xs mt-1">{getFieldError('zona_afectada')}</p>
+                      )}
                     </div>
                     <div>
                       <label htmlFor="ciudad" className="block text-sm font-medium text-slate-700 mb-2">
@@ -307,10 +358,14 @@ const ContactSection = ({ onOpenAppointment }) => {
                         required
                         value={formData.ciudad}
                         onChange={handleChange}
+                        onBlur={handleBlur}
                         placeholder="Ej: Mérida, Cancún"
-                        className="rounded-xl h-12"
+                        className={`rounded-xl h-12 ${getFieldError('ciudad') ? 'border-red-500 focus:ring-red-500' : ''}`}
                         data-testid="input-ciudad"
                       />
+                      {getFieldError('ciudad') && (
+                        <p className="text-red-500 text-xs mt-1">{getFieldError('ciudad')}</p>
+                      )}
                     </div>
                   </div>
 
