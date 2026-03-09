@@ -101,3 +101,84 @@
 #====================================================================================================
 # Testing Data - Main Agent and testing sub agent both should log testing data below this section
 #====================================================================================================
+
+user_problem_statement: "Integrar un popup modal para agendar citas usando Google Calendar en la landing page. El modal debe abrirse al hacer clic en los botones de 'Agendar Cita', mostrar el calendario de Google en un iframe, tener un botón para cerrar y ser responsive."
+
+frontend:
+  - task: "Appointment Modal Component"
+    implemented: true
+    working: true
+    file: "/app/frontend/src/components/AppointmentModal.jsx"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: "NA"
+        agent: "main"
+        comment: "Created AppointmentModal.jsx component with Google Calendar iframe integration"
+      - working: true
+        agent: "testing"
+        comment: "TESTED AND WORKING. Modal component successfully implemented with: Google Calendar iframe loading correctly with correct URL, close button (X) working, overlay click to close working, ESC key to close working, proper dark overlay background, modal centered correctly (896px × 700px), responsive on mobile view. No console errors detected."
+  
+  - task: "Hero Section - Agendar Cita Button"
+    implemented: true
+    working: true
+    file: "/app/frontend/src/components/HeroSection.jsx"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: "NA"
+        agent: "main"
+        comment: "Modified button to open modal instead of navigating to external URL"
+      - working: true
+        agent: "testing"
+        comment: "TESTED AND WORKING. Hero section 'Agendar Cita' button (data-testid='hero-calendar-btn') successfully opens appointment modal. Modal displays Google Calendar iframe correctly. Close functionality verified."
+  
+  - task: "Navbar - Agendar Cita Buttons (desktop and mobile)"
+    implemented: true
+    working: true
+    file: "/app/frontend/src/components/Navbar.jsx"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: "NA"
+        agent: "main"
+        comment: "Modified both desktop and mobile buttons to open modal"
+      - working: true
+        agent: "testing"
+        comment: "TESTED AND WORKING. Desktop navbar button (data-testid='nav-calendar-btn') and mobile menu button (data-testid='mobile-calendar-btn') both successfully open appointment modal. Mobile menu hamburger toggle working correctly. Modal displays correctly in both desktop and mobile views."
+  
+  - task: "Contact Section - Agendar Cita Button"
+    implemented: true
+    working: true
+    file: "/app/frontend/src/components/ContactSection.jsx"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: "NA"
+        agent: "main"
+        comment: "Modified button to open modal instead of navigating to external URL"
+      - working: true
+        agent: "testing"
+        comment: "TESTED AND WORKING. Contact section 'Agendar Cita' button (data-testid='contact-calendar-btn') successfully opens appointment modal. Modal displays Google Calendar iframe correctly. ESC key close functionality verified."
+
+metadata:
+  created_by: "main_agent"
+  version: "1.0"
+  test_sequence: 2
+  run_ui: true
+
+test_plan:
+  current_focus: []
+  stuck_tasks: []
+  test_all: false
+  test_priority: "high_first"
+
+agent_communication:
+  - agent: "main"
+    message: "Implemented appointment modal popup for Google Calendar. All 'Agendar Cita' buttons now open a modal with the Google Calendar iframe. Please test: 1) Click hero section 'Agendar Cita' button, 2) Click navbar 'Agendar Cita' button (desktop), 3) Click navbar 'Agendar Cita' button (mobile), 4) Click contact section 'Agendar Cita' button. Verify modal opens correctly, shows calendar iframe, can be closed with X button, and is responsive."
+  - agent: "testing"
+    message: "TESTING COMPLETED SUCCESSFULLY. All appointment modal features are working correctly. Tested on URL: https://booking-modal-popup.preview.emergentagent.com. All four 'Agendar Cita' buttons (hero section, navbar desktop, navbar mobile, contact section) successfully open the modal. Modal displays Google Calendar iframe with correct URL, closes properly via X button, overlay click, and ESC key. Modal is properly styled with dark overlay and centered layout. Responsive on both desktop (1920x1080) and mobile (390x844) viewports. No console errors or failed network requests detected. All tests passed."

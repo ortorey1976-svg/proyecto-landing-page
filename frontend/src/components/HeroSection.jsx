@@ -3,10 +3,9 @@ import { Button } from "@/components/ui/button";
 import { Calendar, MessageCircle, ChevronDown, CalendarCheck } from "lucide-react";
 
 const WHATSAPP_URL = "https://wa.me/529996359889?text=Hola,%20quiero%20información%20sobre%20una%20consulta";
-const CALENDAR_URL = "https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ3cHH1hiYntiDQrby4vJLKpUAuFChAX5j-q4fL7VsoLRh1cJQqn4_KFAFZukXnU3PEoJ7KYpC2s";
 const HERO_IMAGE = "https://customer-assets.emergentagent.com/job_joint-therapy-mx/artifacts/ksgdkdi3_Equipo%20de%20radiofrecuencia.jpg";
 
-const HeroSection = () => {
+const HeroSection = ({ onOpenAppointment }) => {
   const scrollToContact = () => {
     const element = document.querySelector("#contacto");
     if (element) {
@@ -95,11 +94,12 @@ const HeroSection = () => {
               variant="outline"
               className="rounded-full px-8 py-6 text-base border-white/30 text-white bg-white/10 hover:bg-white/20 backdrop-blur-sm transition-all hover:translate-y-[-2px]"
               data-testid="hero-calendar-btn"
+              onClick={onOpenAppointment}
             >
-              <a href={CALENDAR_URL} target="_blank" rel="noopener noreferrer">
+              <button type="button">
                 <Calendar className="w-5 h-5 mr-2" />
                 Agendar Cita
-              </a>
+              </button>
             </Button>
           </div>
 

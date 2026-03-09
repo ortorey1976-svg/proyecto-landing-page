@@ -3,7 +3,6 @@ import { Button } from "@/components/ui/button";
 import { Menu, X, Calendar, MessageCircle } from "lucide-react";
 
 const WHATSAPP_URL = "https://wa.me/529996359889?text=Hola,%20quiero%20información%20sobre%20una%20consulta";
-const CALENDAR_URL = "https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ3cHH1hiYntiDQrby4vJLKpUAuFChAX5j-q4fL7VsoLRh1cJQqn4_KFAFZukXnU3PEoJ7KYpC2s";
 const LOGO_URL = "https://customer-assets.emergentagent.com/job_joint-therapy-mx/artifacts/nfygiawx_Logo%20sencillo%20pro%20%20autorizado.png";
 
 const navLinks = [
@@ -15,7 +14,7 @@ const navLinks = [
   { href: "#faq", label: "FAQ" },
 ];
 
-const Navbar = ({ isScrolled }) => {
+const Navbar = ({ isScrolled, onOpenAppointment }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const scrollToSection = (e, href) => {
@@ -81,7 +80,6 @@ const Navbar = ({ isScrolled }) => {
           {/* Desktop CTAs */}
           <div className="hidden lg:flex items-center space-x-3">
             <Button
-              asChild
               variant="outline"
               className={`rounded-full px-5 transition-all ${
                 isScrolled
@@ -89,11 +87,10 @@ const Navbar = ({ isScrolled }) => {
                   : "border-white/30 text-white bg-white/10 hover:bg-white/20"
               }`}
               data-testid="nav-calendar-btn"
+              onClick={onOpenAppointment}
             >
-              <a href={CALENDAR_URL} target="_blank" rel="noopener noreferrer">
-                <Calendar className="w-4 h-4 mr-2" />
-                Agendar Cita
-              </a>
+              <Calendar className="w-4 h-4 mr-2" />
+              Agendar Cita
             </Button>
             <Button
               asChild
@@ -147,15 +144,16 @@ const Navbar = ({ isScrolled }) => {
             </div>
             <div className="mt-4 pt-4 border-t border-slate-100 space-y-3">
               <Button
-                asChild
                 variant="outline"
                 className="w-full rounded-xl justify-center"
                 data-testid="mobile-calendar-btn"
+                onClick={() => {
+                  setIsMobileMenuOpen(false);
+                  onOpenAppointment();
+                }}
               >
-                <a href={CALENDAR_URL} target="_blank" rel="noopener noreferrer">
-                  <Calendar className="w-4 h-4 mr-2" />
-                  Agendar Cita
-                </a>
+                <Calendar className="w-4 h-4 mr-2" />
+                Agendar Cita
               </Button>
               <Button
                 asChild

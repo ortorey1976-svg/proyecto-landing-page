@@ -12,9 +12,11 @@ import ContactSection from "../components/ContactSection";
 import FAQSection from "../components/FAQSection";
 import Footer from "../components/Footer";
 import WhatsAppButton from "../components/WhatsAppButton";
+import AppointmentModal from "../components/AppointmentModal";
 
 const LandingPage = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isAppointmentModalOpen, setIsAppointmentModalOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,11 +27,14 @@ const LandingPage = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const openAppointmentModal = () => setIsAppointmentModalOpen(true);
+  const closeAppointmentModal = () => setIsAppointmentModalOpen(false);
+
   return (
     <div className="min-h-screen bg-white" data-testid="landing-page">
-      <Navbar isScrolled={isScrolled} />
+      <Navbar isScrolled={isScrolled} onOpenAppointment={openAppointmentModal} />
       <main>
-        <HeroSection />
+        <HeroSection onOpenAppointment={openAppointmentModal} />
         <ProblemsSection />
         <ServicesSection />
         <TransformationSection />
@@ -37,11 +42,15 @@ const LandingPage = () => {
         <AboutDoctorSection />
         <ProcessSection />
         <LocationSection />
-        <ContactSection />
+        <ContactSection onOpenAppointment={openAppointmentModal} />
         <FAQSection />
       </main>
       <Footer />
       <WhatsAppButton />
+      <AppointmentModal 
+        isOpen={isAppointmentModalOpen} 
+        onClose={closeAppointmentModal} 
+      />
     </div>
   );
 };

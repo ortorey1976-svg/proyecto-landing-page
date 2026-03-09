@@ -18,10 +18,9 @@ import axios from "axios";
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
 const WHATSAPP_URL = "https://wa.me/529996359889?text=Hola,%20acabo%20de%20enviar%20el%20formulario%20de%20contacto";
-const CALENDAR_URL = "https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ3cHH1hiYntiDQrby4vJLKpUAuFChAX5j-q4fL7VsoLRh1cJQqn4_KFAFZukXnU3PEoJ7KYpC2s";
 const PRIVACY_URL = "https://ortorey1976-svg.github.io/privacidad-datos/";
 
-const ContactSection = () => {
+const ContactSection = ({ onOpenAppointment }) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [formData, setFormData] = useState({
@@ -155,16 +154,14 @@ const ContactSection = () => {
                 </a>
               </Button>
               <Button
-                asChild
                 size="lg"
                 variant="outline"
                 className="w-full sm:w-auto rounded-full px-8 border-slate-200 hover:bg-slate-50 ml-0 sm:ml-4"
                 data-testid="contact-calendar-btn"
+                onClick={onOpenAppointment}
               >
-                <a href={CALENDAR_URL} target="_blank" rel="noopener noreferrer">
-                  <Calendar className="w-5 h-5 mr-2" />
-                  Agendar Cita
-                </a>
+                <Calendar className="w-5 h-5 mr-2" />
+                Agendar Cita
               </Button>
             </div>
 
