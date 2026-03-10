@@ -213,6 +213,21 @@ frontend:
         agent: "testing"
         comment: "TESTED AND WORKING. Contact section WhatsApp button (data-testid='contact-whatsapp-btn') displays correctly above contact form. Button has correct href='https://wa.me/529996359889?text=Hola,%20acabo%20de%20enviar%20el%20formulario%20de%20contacto', target='_blank', and rel='noopener noreferrer'. Button is visible with teal styling and 'Enviar WhatsApp' text."
 
+  - task: "Footer - Privacy Policy Link"
+    implemented: true
+    working: true
+    file: "/app/frontend/src/components/Footer.jsx"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: "NA"
+        agent: "main"
+        comment: "Privacy policy link exists in footer pointing to https://ortorey1976-svg.github.io/privacidad-datos/. User requested testing of this functionality."
+      - working: true
+        agent: "testing"
+        comment: "TESTED AND WORKING. Privacy policy link (data-testid='footer-privacy-link') is correctly implemented in the footer bottom bar. Verified: Link is visible in footer section, text shows 'Aviso de Privacidad', external link icon (SVG from lucide-react ExternalLink) is present, href='https://ortorey1976-svg.github.io/privacidad-datos/' is correct, target='_blank' (opens in new tab), rel='noopener noreferrer' (security attribute present). No console errors or failed network requests. Screenshot captured showing footer with privacy link visible."
+
 metadata:
   created_by: "main_agent"
   version: "1.0"
@@ -229,6 +244,10 @@ agent_communication:
   - agent: "main"
     message: "Implemented appointment modal popup for Google Calendar. All 'Agendar Cita' buttons now open a modal with the Google Calendar iframe. Please test: 1) Click hero section 'Agendar Cita' button, 2) Click navbar 'Agendar Cita' button (desktop), 3) Click navbar 'Agendar Cita' button (mobile), 4) Click contact section 'Agendar Cita' button. Verify modal opens correctly, shows calendar iframe, can be closed with X button, and is responsive."
   - agent: "testing"
-    message: "TESTING COMPLETED SUCCESSFULLY. All appointment modal features are working correctly. Tested on URL: https://booking-modal-popup.preview.emergentagent.com. All four 'Agendar Cita' buttons (hero section, navbar desktop, navbar mobile, contact section) successfully open the modal. Modal displays Google Calendar iframe with correct URL, closes properly via X button, overlay click, and ESC key. Modal is properly styled with dark overlay and centered layout. Responsive on both desktop (1920x1080) and mobile (390x844) viewports. No console errors or failed network requests detected. All tests passed."
+    message: "TESTING COMPLETED SUCCESSFULLY. All appointment modal features are working correctly. Tested on URL: https://privacidad-aviso.preview.emergentagent.com. All four 'Agendar Cita' buttons (hero section, navbar desktop, navbar mobile, contact section) successfully open the modal. Modal displays Google Calendar iframe with correct URL, closes properly via X button, overlay click, and ESC key. Modal is properly styled with dark overlay and centered layout. Responsive on both desktop (1920x1080) and mobile (390x844) viewports. No console errors or failed network requests detected. All tests passed."
   - agent: "testing"
-    message: "WHATSAPP BUTTONS TESTING COMPLETED SUCCESSFULLY. Tested all 5 WhatsApp buttons on URL: https://booking-modal-popup.preview.emergentagent.com. Results: 1) Floating WhatsApp Button (data-testid='whatsapp-float-btn') - WORKING ✓ (bottom right corner, green styled, correct href with number 529996359889, target='_blank'). 2) Hero Section WhatsApp Button (data-testid='hero-whatsapp-btn') - WORKING ✓ (teal styled, correct href, target='_blank'). 3) Navbar WhatsApp Button Desktop (data-testid='nav-whatsapp-btn') - WORKING ✓ (teal styled, correct href, target='_blank'). 4) Mobile Navbar WhatsApp Button (data-testid='mobile-whatsapp-btn') - WORKING ✓ (opens in mobile menu, teal styled, correct href, target='_blank'). 5) Contact Section WhatsApp Button (data-testid='contact-whatsapp-btn') - WORKING ✓ (teal styled, correct href with different text, target='_blank'). All buttons have proper attributes (href, target, rel), are visible, and clickable. No console errors. All tests passed (5/5)."
+    message: "WHATSAPP BUTTONS TESTING COMPLETED SUCCESSFULLY. Tested all 5 WhatsApp buttons on URL: https://privacidad-aviso.preview.emergentagent.com. Results: 1) Floating WhatsApp Button (data-testid='whatsapp-float-btn') - WORKING ✓ (bottom right corner, green styled, correct href with number 529996359889, target='_blank'). 2) Hero Section WhatsApp Button (data-testid='hero-whatsapp-btn') - WORKING ✓ (teal styled, correct href, target='_blank'). 3) Navbar WhatsApp Button Desktop (data-testid='nav-whatsapp-btn') - WORKING ✓ (teal styled, correct href, target='_blank'). 4) Mobile Navbar WhatsApp Button (data-testid='mobile-whatsapp-btn') - WORKING ✓ (opens in mobile menu, teal styled, correct href, target='_blank'). 5) Contact Section WhatsApp Button (data-testid='contact-whatsapp-btn') - WORKING ✓ (teal styled, correct href with different text, target='_blank'). All buttons have proper attributes (href, target, rel), are visible, and clickable. No console errors. All tests passed (5/5)."
+  - agent: "main"
+    message: "User requested testing of Privacy Policy link. Please test the 'Aviso de Privacidad' link (data-testid='footer-privacy-link') in the footer section. Verify: 1) Link is visible in footer, 2) Link has correct href='https://ortorey1976-svg.github.io/privacidad-datos/', 3) Link opens in new tab (target='_blank'), 4) Link has proper attributes (rel='noopener noreferrer'), 5) Link has external link icon."
+  - agent: "testing"
+    message: "PRIVACY POLICY LINK TESTING COMPLETED SUCCESSFULLY. Tested the footer privacy policy link on URL: https://privacidad-aviso.preview.emergentagent.com. Privacy Policy Link (data-testid='footer-privacy-link') - WORKING ✓. All verification points passed: Link is visible in footer bottom bar section, link text displays 'Aviso de Privacidad', external link icon (SVG) is present from lucide-react ExternalLink component, href='https://ortorey1976-svg.github.io/privacidad-datos/' is correct, target='_blank' (opens in new tab), rel='noopener noreferrer' (security attribute present). No console errors or failed network requests detected. Screenshots captured showing footer with privacy link visible. Test passed (1/1)."
